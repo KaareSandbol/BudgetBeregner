@@ -66,21 +66,25 @@ namespace Budget_Beregner
         private void ShowBudget()
         {
             Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.ReadKey();
         }
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
             Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
         private void CreateBudgetAdvanced()
         {
             Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.ReadKey();
         }
         // TODO: Implement CreateBudgetPersonal()
         private void CreateBudgetPersonal()
         {
             Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.ReadKey();
         }
         // TODO: Implement SaveBudget()
         private void SaveBudget()
