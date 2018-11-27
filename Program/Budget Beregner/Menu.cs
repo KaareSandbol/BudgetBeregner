@@ -26,13 +26,7 @@ namespace Budget_Beregner
                         ShowBudget();
                         break;
                     case "2":
-                        CreateBudgetSimple();
-                        break;
-                    case "3":
-                        CreateBudgetAdvanced();
-                        break;
-                    case "4":
-                        CreateBudgetPersonal();
+                        ShowBudgetMenu();
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
@@ -49,10 +43,20 @@ namespace Budget_Beregner
             Console.WriteLine("Vælg venligst en af nedenstående menupunkter...");
             Console.WriteLine();
             Console.WriteLine("1. Vis budget - NA");
-            Console.WriteLine("2. Lav simpelt budget - NA");
-            Console.WriteLine("3. Lav avanceret budget - NA");
-            Console.WriteLine("4. Lav eget budget - NA");
+            Console.WriteLine("2. Lav et budget - NA");
             Console.WriteLine("0. Exit");
+        }
+        // TODO: Give the ability to choose and run the method
+        private void ShowBudgetMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("--== Vælg hvilket budget du vil lægge ==--");
+            Console.WriteLine();
+            Console.WriteLine("1. Lav simpelt budget - NA");
+            Console.WriteLine("2. Lav avanceret budget - NA");
+            Console.WriteLine("3. Lav eget budget - NA");
+            Console.WriteLine("0. Exit");
+            Console.ReadKey();
         }
 
         private string GetUserChoice()
