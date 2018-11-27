@@ -41,7 +41,7 @@ namespace Budget_Beregner
                 }
             } while (running);
         }
-
+        // TODO: Additional menu with diffecent budget types for choice
         private void ShowMenu()
         {
             Console.Clear();
