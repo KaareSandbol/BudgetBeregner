@@ -46,8 +46,7 @@ namespace Budget_Beregner
         {
             Console.Clear();
             Console.WriteLine("--== Velkommen til AL budget beregner! ==--");
-            Console.WriteLine("Vælg venligst en" +
-                " af nedenstående menupunkter...");
+            Console.WriteLine("Vælg venligst en af nedenstående menupunkter...");
             Console.WriteLine();
             Console.WriteLine("1. Vis budget - NA");
             Console.WriteLine("2. Lav simpelt budget - NA");
