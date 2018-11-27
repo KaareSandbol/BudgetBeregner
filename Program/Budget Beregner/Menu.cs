@@ -8,6 +8,8 @@ namespace Budget_Beregner
 {
     public class Menu
     {
+        Controller control = new Controller();
+
         public void Show()
         {
             bool running = true;
@@ -45,6 +47,36 @@ namespace Budget_Beregner
             Console.WriteLine();
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
+        }
+        // TODO: Implement ShowBudget()
+        private void ShowBudget()
+        {
+            throw new NotImplementedException();
+        }
+        // TODO: Implement CreateBudgetSimple()
+        private void CreateBudgetSimple()
+        {
+            throw new NotImplementedException();
+        }
+        // TODO: Implement CreateBudgetAdvanced()
+        private void CreateBudgetAdvanced()
+        {
+            throw new NotImplementedException();
+        }
+        // TODO: Implement CreateBudgetPersonal()
+        private void CreateBudgetPersonal()
+        {
+            throw new NotImplementedException();
+        }
+        // TODO: Implement SaveBudget()
+        private void SaveBudget()
+        {
+            throw new NotImplementedException();
+        }
+        // TODO: Implement LoadBudget()
+        private void LoadBudget()
+        {
+            throw new NotImplementedException();
         }
     }
 }
