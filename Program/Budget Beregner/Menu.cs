@@ -22,6 +22,18 @@ namespace Budget_Beregner
                     case "0":
                         running = false;
                         break;
+                    case "1":
+                        ShowBudget();
+                        break;
+                    case "2":
+                        CreateBudgetSimple();
+                        break;
+                    case "3":
+                        CreateBudgetAdvanced();
+                        break;
+                    case "4":
+                        CreateBudgetPersonal();
+                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -33,12 +45,14 @@ namespace Budget_Beregner
         private void ShowMenu()
         {
             Console.Clear();
-            Console.WriteLine("Velkommen til AL budget beregner!");
+            Console.WriteLine("--== Velkommen til AL budget beregner! ==--");
             Console.WriteLine("Vælg venligst en" +
                 " af nedenstående menupunkter...");
             Console.WriteLine();
-            Console.WriteLine("1. VALG 1");
-            Console.WriteLine("2. VALG 2");
+            Console.WriteLine("1. Vis budget - NA");
+            Console.WriteLine("2. Lav simpelt budget - NA");
+            Console.WriteLine("3. Lav avanceret budget - NA");
+            Console.WriteLine("4. Lav eget budget - NA");
             Console.WriteLine("0. Exit");
         }
 
@@ -51,22 +65,22 @@ namespace Budget_Beregner
         // TODO: Implement ShowBudget()
         private void ShowBudget()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
         }
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
         }
         // TODO: Implement CreateBudgetAdvanced()
         private void CreateBudgetAdvanced()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
         }
         // TODO: Implement CreateBudgetPersonal()
         private void CreateBudgetPersonal()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
         }
         // TODO: Implement SaveBudget()
         private void SaveBudget()
