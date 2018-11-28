@@ -17,7 +17,7 @@ namespace Budget_Beregner
         void Run()
         {
             Menu menu = new Menu();
-            menu.Show();
+            menu.StartMenu();
         }
     }
 }

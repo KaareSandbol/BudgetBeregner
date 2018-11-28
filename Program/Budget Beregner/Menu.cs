@@ -8,11 +8,11 @@ namespace Budget_Beregner
 {
     public class Menu
     {
+        bool running = true;
         Controller control = new Controller();
 
-        public void Show()
+        public void StartMenu()
         {
-            bool running = true;
             do
             {
                 ShowMenu();
@@ -26,7 +26,7 @@ namespace Budget_Beregner
                         ShowBudget();
                         break;
                     case "2":
-                        ShowBudgetMenu();
+                        BudgetMenu();
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
@@ -34,6 +34,35 @@ namespace Budget_Beregner
                         break;
                 }
             } while (running);
+        }
+
+        public void BudgetMenu()
+        {
+            bool menuType = true;
+            do
+            {
+                ShowBudgetMenu();
+                string choice = GetUserChoice();
+                switch (choice)
+                {
+                    case "0":
+                        ShowMenu();
+                        menuType = false;
+                        break;
+                    case "1":
+                        CreateBudgetSimple();
+                        break;
+                    case "2":
+                        CreateBudgetAdvanced();
+                        break;
+                    case "3":
+                        break;
+                    default:
+                        Console.WriteLine("Ugyldigt valg.");
+                        Console.ReadLine();
+                        break;
+                }
+            } while (menuType);
         }
         // TODO: Additional menu with diffecent budget types for choice
         private void ShowMenu()
@@ -55,8 +84,7 @@ namespace Budget_Beregner
             Console.WriteLine("1. Lav simpelt budget - NA");
             Console.WriteLine("2. Lav avanceret budget - NA");
             Console.WriteLine("3. Lav eget budget - NA");
-            Console.WriteLine("0. Exit");
-            Console.ReadKey();
+            Console.WriteLine("0. Gå tilbage til forrige menu");
         }
 
         private string GetUserChoice()
