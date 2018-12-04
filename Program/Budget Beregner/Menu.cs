@@ -135,8 +135,7 @@ namespace Budget_Beregner
                 Console.SetCursorPosition(10, 0);
                 Console.WriteLine("SU: ");
                 Console.SetCursorPosition(10, 2);
-            }
-            Income.Add(int.Parse(Console.ReadLine()));            
+            }         
             Console.SetCursorPosition(10, 3);
             Income.Add(int.Parse(Console.ReadLine()));
 
