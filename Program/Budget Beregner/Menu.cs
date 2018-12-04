@@ -29,7 +29,7 @@ namespace Budget_Beregner
                         BudgetMenu();
                         break;
                     default:
-                        Console.WriteLine("Ugyldigt valg.");
+                        Console.WriteLine("Ugyldigt valg.");                        
                         Console.ReadLine();
                         break;
                 }
@@ -102,7 +102,15 @@ namespace Budget_Beregner
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.Clear();
+            Console.WriteLine("SU: ");
+            Console.WriteLine("Løn: ");
+
+            Console.SetCursorPosition(4, 0);
+            string first = Console.ReadLine();
+            Console.SetCursorPosition(5, 1);
+            string second = Console.ReadLine();
+            Console.WriteLine(first+" "+second);
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
