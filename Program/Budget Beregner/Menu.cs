@@ -29,7 +29,7 @@ namespace Budget_Beregner
                         BudgetMenu();
                         break;
                     default:
-                        Console.WriteLine("Ugyldigt valg.");
+                        Console.WriteLine("Ugyldigt valg. TRYK ENTER FOR AT KOMME TILBAGE");
                         Console.ReadLine();
                         break;
                 }
@@ -58,7 +58,7 @@ namespace Budget_Beregner
                     case "3":
                         break;
                     default:
-                        Console.WriteLine("Ugyldigt valg.");
+                        Console.WriteLine("Ugyldigt valg. TRYK ENTER FOR AT KOMME TILBAGE");
                         Console.ReadLine();
                         break;
                 }
@@ -96,25 +96,25 @@ namespace Budget_Beregner
         // TODO: Implement ShowBudget()
         private void ShowBudget()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU... TRYK ENTER FOR AT KOMME TILBAGE");
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU... TRYK ENTER FOR AT KOMME TILBAGE");
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
         private void CreateBudgetAdvanced()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU... TRYK ENTER FOR AT KOMME TILBAGE");
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetPersonal()
         private void CreateBudgetPersonal()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            Console.WriteLine("IKKE IMPLEMENTERET ENDNU... TRYK ENTER FOR AT KOMME TILBAGE");
             Console.ReadKey();
         }
         // TODO: Implement SaveBudget()
