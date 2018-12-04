@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalculatorLibary;
 
 namespace Budget_Beregner
 {
@@ -134,8 +135,7 @@ namespace Budget_Beregner
                 Console.SetCursorPosition(10, 0);
                 Console.WriteLine("SU: ");
                 Console.SetCursorPosition(10, 2);
-            }
-            Income.Add(int.Parse(Console.ReadLine()));            
+            }         
             Console.SetCursorPosition(10, 3);
             Income.Add(int.Parse(Console.ReadLine()));
 
@@ -143,9 +143,8 @@ namespace Budget_Beregner
             Expenses.Add(int.Parse(Console.ReadLine()));
             Console.SetCursorPosition(10, 7);
             Expenses.Add(int.Parse(Console.ReadLine()));
-            int incomeSum = Income.Sum();
-            int expensesSum = Expenses.Sum();
-            Console.WriteLine("Dit rådighedsbeløb er: "+ (incomeSum-expensesSum));
+            BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine("Dit rådighedsbeløb er: "+ budgetRepo.CalculatorDisposable(Income, Expenses));
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
