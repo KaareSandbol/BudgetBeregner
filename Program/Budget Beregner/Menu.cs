@@ -102,15 +102,32 @@ namespace Budget_Beregner
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
+            List<int> Income = new List<int>();
+            List<int> Expenses = new List<int>();
+
+            
+            
             Console.Clear();
+            Console.WriteLine("Budget til 18-25 årige");
+            Console.WriteLine("Indtast indkomster:");
             Console.WriteLine("SU: ");
             Console.WriteLine("Løn: ");
+            Console.WriteLine("\n Indtast Udgifter:");
+            Console.WriteLine("Mobil: ");
+            Console.WriteLine("Husleje: ");
 
-            Console.SetCursorPosition(4, 0);
-            string first = Console.ReadLine();
-            Console.SetCursorPosition(5, 1);
-            string second = Console.ReadLine();
-            Console.WriteLine(first+" "+second);
+            Console.SetCursorPosition(10, 2);
+            Income.Add(int.Parse(Console.ReadLine()));            
+            Console.SetCursorPosition(10, 3);
+            Income.Add(int.Parse(Console.ReadLine()));
+
+            Console.SetCursorPosition(10, 6);
+            Expenses.Add(int.Parse(Console.ReadLine()));
+            Console.SetCursorPosition(10, 7);
+            Expenses.Add(int.Parse(Console.ReadLine()));
+            int incomeSum = Income.Sum();
+            int expensesSum = Expenses.Sum();
+            Console.WriteLine("Dit rådighedsbeløb er: "+ (incomeSum-expensesSum));
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
