@@ -15,6 +15,8 @@ namespace Budget_Beregner
         {
             do
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;                
                 ShowMenu();
                 string choice = GetUserChoice();
                 switch (choice)
@@ -29,8 +31,8 @@ namespace Budget_Beregner
                         BudgetMenu();
                         break;
                     default:
-                        Console.WriteLine("Ugyldigt valg.");
-                        Console.ReadKey();
+                        Console.WriteLine("Ugyldigt valg.");                        
+                        Console.ReadLine();
                         break;
                 }
             } while (running);
@@ -59,7 +61,7 @@ namespace Budget_Beregner
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
-                        Console.ReadKey();
+                        Console.ReadLine();
                         break;
                 }
             } while (menuType);
@@ -72,7 +74,7 @@ namespace Budget_Beregner
             Console.WriteLine("Vælg venligst en af nedenstående menupunkter...");
             Console.WriteLine();
             Console.WriteLine("1. Vis budget - NA");
-            Console.WriteLine("2. Lav et budget - NA");
+            Console.WriteLine("2. Lav et budget");
             Console.WriteLine("0. Exit");
         }
         // TODO: Give the ability to choose and run the method
@@ -81,7 +83,7 @@ namespace Budget_Beregner
             Console.Clear();
             Console.WriteLine("--== Vælg hvilket budget du vil lægge ==--");
             Console.WriteLine();
-            Console.WriteLine("1. Lav simpelt budget - NA");
+            Console.WriteLine("1. Lav simpelt budget");
             Console.WriteLine("2. Lav avanceret budget - NA");
             Console.WriteLine("3. Lav eget budget - NA");
             Console.WriteLine("0. Gå tilbage til forrige menu");
@@ -102,7 +104,48 @@ namespace Budget_Beregner
         // TODO: Implement CreateBudgetSimple()
         private void CreateBudgetSimple()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            List<int> Income = new List<int>();
+            List<int> Expenses = new List<int>();
+
+            
+            Console.Clear();
+            Console.WriteLine("Budget til 18-25 årige");
+            Console.WriteLine("Indtast indkomster:");
+            Console.WriteLine("SU: ");
+            Console.WriteLine("Løn: ");
+            Console.WriteLine("\nIndtast Udgifter:");
+            Console.WriteLine("Mobil: ");
+            Console.WriteLine("Husleje: ");
+
+            Console.SetCursorPosition(10, 2);
+            try
+            {
+                Income.Add(int.Parse(Console.ReadLine()));
+            }
+            catch (Exception)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.WriteLine("Indtast venligst et tal.");
+                Console.ReadKey();
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.WriteLine("SU: ");
+                Console.SetCursorPosition(10, 2);
+            }
+            Income.Add(int.Parse(Console.ReadLine()));            
+            Console.SetCursorPosition(10, 3);
+            Income.Add(int.Parse(Console.ReadLine()));
+
+            Console.SetCursorPosition(10, 6);
+            Expenses.Add(int.Parse(Console.ReadLine()));
+            Console.SetCursorPosition(10, 7);
+            Expenses.Add(int.Parse(Console.ReadLine()));
+            int incomeSum = Income.Sum();
+            int expensesSum = Expenses.Sum();
+            Console.WriteLine("Dit rådighedsbeløb er: "+ (incomeSum-expensesSum));
             Console.ReadKey();
         }
         // TODO: Implement CreateBudgetAdvanced()
