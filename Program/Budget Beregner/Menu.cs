@@ -41,6 +41,7 @@ namespace Budget_Beregner
 
         public void BudgetMenu()
         {
+            Budget budget = new Budget();
             bool menuType = true;
             do
             {
@@ -53,11 +54,10 @@ namespace Budget_Beregner
                         menuType = false;
                         break;
                     case "1":
-                        Budget budget = new Budget();
                         budget.CreateBudgetSimple();
                         break;
                     case "2":
-                        CreateBudgetAdvanced();
+                        budget.CreateBudgetAdvanced();
                         break;
                     case "3":
                         break;
@@ -86,7 +86,7 @@ namespace Budget_Beregner
             Console.WriteLine("--== Vælg hvilket budget du vil lægge ==--");
             Console.WriteLine();
             Console.WriteLine("1. Lav simpelt budget");
-            Console.WriteLine("2. Lav avanceret budget - NA");
+            Console.WriteLine("2. Lav avanceret budget");
             Console.WriteLine("3. Lav eget budget - NA");
             Console.WriteLine("0. Gå tilbage til forrige menu");
         }
@@ -103,47 +103,7 @@ namespace Budget_Beregner
             Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
             Console.ReadKey();
         }
-
-       
-        // TODO: Implement CreateBudgetSimple()
-        //private void CreateBudgetSimple()
-        //{
-        //    int row = 0;
-        //    int column = 0;
-        //    bool exit = true;
-        //    List<int> Income = new List<int>();
-        //    List<int> Expenses = new List<int>();
-
-
-        //    Console.Clear();
-        //    Console.WriteLine("Budget til 18-25 årige");
-        //    Console.WriteLine("Indtast indkomster:");
-        //    Console.WriteLine("SU: ");
-        //    Console.WriteLine("Løn: ");
-        //    Console.WriteLine("\nIndtast Udgifter:");
-        //    Console.WriteLine("Mobil: ");
-        //    Console.WriteLine("Husleje: ");
-        //    // Console.WriteLine("Personlig pleje: ");
-        //    Console.SetCursorPosition(10, 2);
-
-      
-        //    Console.SetCursorPosition(10, 3);
-        //    Income.Add(int.Parse(Console.ReadLine()));
-
-        //    Console.SetCursorPosition(10, 6);
-        //    Expenses.Add(int.Parse(Console.ReadLine()));
-        //    Console.SetCursorPosition(10, 7);
-        //    Expenses.Add(int.Parse(Console.ReadLine()));
-        //    BudgetRepository budgetRepo = new BudgetRepository();
-        //    Console.WriteLine("Dit rådighedsbeløb er: "+ budgetRepo.CalculatorDisposable(Income, Expenses));
-        //    Console.ReadKey();
-        //}
-        // TODO: Implement CreateBudgetAdvanced()
-        private void CreateBudgetAdvanced()
-        {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
-            Console.ReadKey();
-        }
+   
         // TODO: Implement CreateBudgetPersonal()
         private void CreateBudgetPersonal()
         {
