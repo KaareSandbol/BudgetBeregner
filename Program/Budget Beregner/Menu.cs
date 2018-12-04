@@ -30,7 +30,7 @@ namespace Budget_Beregner
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         break;
                 }
             } while (running);
@@ -59,7 +59,7 @@ namespace Budget_Beregner
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         break;
                 }
             } while (menuType);
