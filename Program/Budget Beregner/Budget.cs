@@ -13,7 +13,6 @@ namespace Budget_Beregner
         int row = 0;
         int column = 0;
         int columnamount = 0;
-        bool exit = true;
         
         
 
@@ -22,14 +21,11 @@ namespace Budget_Beregner
 
         private void InputIncome()
         {
-            while (exit)
-            {
                 try
                 {
                     Console.SetCursorPosition(row, column);
                     Income.Add(int.Parse(Console.ReadLine()));
                     column += 1;
-                    exit = false;
                 }
 
                 catch (Exception)
@@ -43,19 +39,15 @@ namespace Budget_Beregner
                     Console.Write("                   ");
                     Console.SetCursorPosition(row, column);
                 }
-            }
         }
 
         private void InputExpense()
         {
-            while (exit)
-            {
                 try
                 {
                     Console.SetCursorPosition(row, column);
                     Expenses.Add(int.Parse(Console.ReadLine()));
                     column += 1;
-                    exit = false;
                 }
 
                 catch (Exception)
@@ -69,7 +61,6 @@ namespace Budget_Beregner
                     Console.Write("                   ");
                     Console.SetCursorPosition(row, column);
                 }
-            }
         }
 
         internal void CreateBudgetAdvanced()
@@ -120,7 +111,6 @@ namespace Budget_Beregner
                     InputExpense();
                 }
 
-                exit = true;
             }
 
             BudgetRepository budgetRepo = new BudgetRepository();
@@ -165,7 +155,6 @@ namespace Budget_Beregner
                     InputExpense();
                 }
 
-                exit = true;
             }
           
             BudgetRepository budgetRepo = new BudgetRepository();
