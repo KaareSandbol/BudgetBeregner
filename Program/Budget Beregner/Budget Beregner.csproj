@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Budget.cs" />
-    <Compile Include="Controller.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalculatorLibary\CalculatorLibary.csproj">
+    <ProjectReference Include="..\CalculatorLibary\BudgetLibrary.csproj">
       <Project>{0a89e2ad-05b0-4347-a815-58d94abf36fd}</Project>
-      <Name>CalculatorLibary</Name>
+      <Name>BudgetLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿using CalculatorLibary;
+﻿using BudgetLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Budget_Beregner
 {
-    class Budget
+     public class Template
     {
         // TODO: Need variable to check if it's expense or income.
         int row = 0;
         int column = 0;
         int columnamount = 0;
-        
+        List<string> incomeColumn = new List<string>();
+        List<string> expenseColumn = new List<string>();
         
 
         List<int> Income = new List<int>();
@@ -63,36 +64,40 @@ namespace Budget_Beregner
                 }
         }
 
-        internal void CreateBudgetAdvanced()
+        public void TemplateAdvanced()
         {
             row = 30;
             column = 2;
             columnamount = 18;
+            incomeColumn.Add("SU: ");
+            incomeColumn.Add("Løn: ");
+            incomeColumn.Add("Boligstøtte: ");
+            incomeColumn.Add("Stipendier: ");
 
+            expenseColumn.Add("Forsikring: ");
+            expenseColumn.Add("Husleje: ");
+            expenseColumn.Add("Aconto: ");
+            expenseColumn.Add("El: ");
+            expenseColumn.Add("A-kasse: ");
+            expenseColumn.Add("Mad: ");
+            expenseColumn.Add("Mobil: ");
+            expenseColumn.Add("Transport: ");
+            expenseColumn.Add("Internet/lincens: ");
+            expenseColumn.Add("Fitness og sport: ");
+            expenseColumn.Add("Streaming tjenester: ");
+            expenseColumn.Add("Opsparing: ");
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
             Console.WriteLine("Indtast indkomster:");
-            Console.WriteLine("SU: ");
-            Console.WriteLine("Løn: ");
-            Console.WriteLine("Boligstøtte: ");
-            Console.WriteLine("Stipendier: ");
+            for (int i = 0; i < incomeColumn.Count; i++)
+            {
+                Console.WriteLine(incomeColumn[i]);
+            }
             Console.WriteLine("\nIndtast Udgifter:");
-            Console.WriteLine("Forsikring: ");
-            Console.WriteLine("Husleje: ");
-            Console.WriteLine("Aconto: ");
-            Console.WriteLine("El: ");
-            Console.WriteLine("A-kasse: ");
-            Console.WriteLine("Mad: ");
-            Console.WriteLine("Personlig pleje: ");
-            Console.WriteLine("Mobil: ");
-            Console.WriteLine("Transport: ");
-            Console.WriteLine("Internet/licens: ");
-            Console.WriteLine("Fitness og sport: ");
-            Console.WriteLine("Streaming tjenester: ");
-            Console.WriteLine("Bil: ");
-            Console.WriteLine("Opsparing: ");
-
-
+            for (int i = 0; i < expenseColumn.Count; i++)
+            {
+                Console.WriteLine(expenseColumn[i]);
+            }
 
             for (int i = 0; i < columnamount; i++)
             {
@@ -115,27 +120,47 @@ namespace Budget_Beregner
 
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Console.WriteLine("Vil du gemme dit budget? Y/N");
+            string save = Console.ReadLine();
+            if (save is "y" || save is "Y")
+            {
+                budgetRepo.SaveBudget(incomeColumn, expenseColumn, Income, Expenses);
+            }
+            else if (save is "n" || save is "N")
+            {
+                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
+            }
+            incomeColumn.Clear();
+            expenseColumn.Clear();
             Income.Clear();
             Expenses.Clear();
             Console.ReadKey();
         }
 
-        public void CreateBudgetSimple()
+        public void TemplateSimple()
         {
             row = 20;
             column = 2;
             columnamount = 6;
+            incomeColumn.Add("SU: ");
+            incomeColumn.Add("Løn: ");
 
+            expenseColumn.Add("Mobil: ");
+            expenseColumn.Add("Husleje: ");
+            expenseColumn.Add("Streaming tjenester: ");
+            expenseColumn.Add("Opsparing: ");
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
             Console.WriteLine("Indtast indkomster:");
-            Console.WriteLine("SU: ");
-            Console.WriteLine("Løn: ");
+            for (int i = 0; i < incomeColumn.Count; i++)
+            {
+                Console.WriteLine(incomeColumn[i]);
+            }
             Console.WriteLine("\nIndtast Udgifter:");
-            Console.WriteLine("Mobil: ");
-            Console.WriteLine("Husleje: ");
-            Console.WriteLine("Personlig pleje: ");
-            Console.WriteLine("Opsparing: ");
+            for (int i = 0; i < expenseColumn.Count; i++)
+            {
+                Console.WriteLine(expenseColumn[i]);
+            }
 
             // HACK: Only works if there's exactly 2 types of income. Hacked for demo purposes.
             for (int i = 0; i < columnamount; i++)
@@ -159,9 +184,27 @@ namespace Budget_Beregner
           
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Console.WriteLine("Vil du gemme dit budget? Y/N");
+            string save = Console.ReadLine();
+            if (save is "y" || save is "Y")
+            {
+                budgetRepo.SaveBudget(incomeColumn, expenseColumn, Income, Expenses);
+                Console.ReadKey();
+            }
+            else if (save is "n" || save is "N")
+            {
+                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
+            }
+            incomeColumn.Clear();
+            expenseColumn.Clear();
             Income.Clear();
             Expenses.Clear();
             Console.ReadKey();
+        }
+
+        public void TemplatePersonal()
+        {
+            throw new NotImplementedException();
         }
     }
 }

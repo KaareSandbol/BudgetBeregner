@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CalculatorLibary;
+using BudgetLibrary;
 
 namespace Budget_Beregner
 {
     public class Menu
     {
         bool running = true;
-        Controller control = new Controller();
 
         public void StartMenu()
         {
@@ -41,7 +40,7 @@ namespace Budget_Beregner
 
         public void BudgetMenu()
         {
-            Budget budget = new Budget();
+            Template budget = new Template();
             bool menuType = true;
             do
             {
@@ -54,10 +53,10 @@ namespace Budget_Beregner
                         menuType = false;
                         break;
                     case "1":
-                        budget.CreateBudgetSimple();
+                        budget.TemplateSimple();
                         break;
                     case "2":
-                        budget.CreateBudgetAdvanced();
+                        budget.TemplateAdvanced();
                         break;
                     case "3":
                         break;
