@@ -129,6 +129,8 @@ namespace Budget_Beregner
 
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Income.Clear();
+            Expenses.Clear();
             Console.ReadKey();
         }
 
@@ -136,7 +138,7 @@ namespace Budget_Beregner
         {
             row = 20;
             column = 2;
-            columnamount = 7;
+            columnamount = 6;
 
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
@@ -147,8 +149,7 @@ namespace Budget_Beregner
             Console.WriteLine("Mobil: ");
             Console.WriteLine("Husleje: ");
             Console.WriteLine("Personlig pleje: ");
-            Console.WriteLine("Tandlæge: ");
-            Console.WriteLine("Forsikring: ");
+            Console.WriteLine("Opsparing: ");
 
             // HACK: Only works if there's exactly 2 types of income. Hacked for demo purposes.
             for (int i = 0; i < columnamount; i++)
@@ -173,6 +174,8 @@ namespace Budget_Beregner
           
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Income.Clear();
+            Expenses.Clear();
             Console.ReadKey();
         }
     }
