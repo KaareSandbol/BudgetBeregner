@@ -76,7 +76,7 @@ namespace Budget_Beregner
         {
             row = 30;
             column = 2;
-            columnamount = 22;
+            columnamount = 18;
 
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
@@ -93,16 +93,12 @@ namespace Budget_Beregner
             Console.WriteLine("A-kasse: ");
             Console.WriteLine("Mad: ");
             Console.WriteLine("Personlig pleje: ");
-            Console.WriteLine("Rengøring: ");
-            Console.WriteLine("Tandlæge: ");
             Console.WriteLine("Mobil: ");
             Console.WriteLine("Transport: ");
-            Console.WriteLine("Skole: ");
             Console.WriteLine("Internet/licens: ");
             Console.WriteLine("Fitness og sport: ");
             Console.WriteLine("Streaming tjenester: ");
             Console.WriteLine("Bil: ");
-            Console.WriteLine("Lån: ");
             Console.WriteLine("Opsparing: ");
 
 
