@@ -9,66 +9,21 @@ namespace Budget_Beregner
 {
      public class Template
     {
-        // TODO: Need variable to check if it's expense or income.
-        int row = 0;
-        int column = 0;
-        int columnamount = 0;
         List<string> incomeColumn = new List<string>();
         List<string> expenseColumn = new List<string>();
-        
-
         List<int> Income = new List<int>();
         List<int> Expenses = new List<int>();
-
-        private void InputIncome()
-        {
-                try
-                {
-                    Console.SetCursorPosition(row, column);
-                    Income.Add(int.Parse(Console.ReadLine()));
-                    column += 1;
-                }
-
-                catch (Exception)
-                {
-                    Console.SetCursorPosition(row + 10, column);
-                    Console.WriteLine("Indtast venligst et tal.");
-                    Console.ReadKey();
-                    Console.SetCursorPosition(row + 10, column);
-                    Console.Write("                                    ");
-                    Console.SetCursorPosition(row, column);
-                    Console.Write("                   ");
-                    Console.SetCursorPosition(row, column);
-                }
-        }
-
-        private void InputExpense()
-        {
-                try
-                {
-                    Console.SetCursorPosition(row, column);
-                    Expenses.Add(int.Parse(Console.ReadLine()));
-                    column += 1;
-                }
-
-                catch (Exception)
-                {
-                    Console.SetCursorPosition(row + 10, column);
-                    Console.WriteLine("Indtast venligst et tal.");
-                    Console.ReadKey();
-                    Console.SetCursorPosition(row + 10, column);
-                    Console.Write("                                    ");
-                    Console.SetCursorPosition(row, column);
-                    Console.Write("                   ");
-                    Console.SetCursorPosition(row, column);
-                }
-        }
+        int row = 0;
+        int column = 0;
+        int columnAmount = 0; 
+        int incomeNumber = 0;
+        int expenseNumber = 0;
 
         public void TemplateAdvanced()
         {
             row = 30;
             column = 2;
-            columnamount = 18;
+            columnAmount = 18;
             incomeColumn.Add("SU: ");
             incomeColumn.Add("Løn: ");
             incomeColumn.Add("Boligstøtte: ");
@@ -86,20 +41,23 @@ namespace Budget_Beregner
             expenseColumn.Add("Fitness og sport: ");
             expenseColumn.Add("Streaming tjenester: ");
             expenseColumn.Add("Opsparing: ");
+            columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
             Console.WriteLine("Indtast indkomster:");
+
             for (int i = 0; i < incomeColumn.Count; i++)
             {
                 Console.WriteLine(incomeColumn[i]);
             }
             Console.WriteLine("\nIndtast Udgifter:");
+
             for (int i = 0; i < expenseColumn.Count; i++)
             {
                 Console.WriteLine(expenseColumn[i]);
             }
 
-            for (int i = 0; i < columnamount; i++)
+            for (int i = 0; i < columnAmount; i++)
             {
                 if (i < 4)
                 {
@@ -135,13 +93,14 @@ namespace Budget_Beregner
             Income.Clear();
             Expenses.Clear();
             Console.ReadKey();
+            columnAmount = 0;
         }
 
         public void TemplateSimple()
         {
             row = 20;
             column = 2;
-            columnamount = 6;
+            columnAmount = 6;
             incomeColumn.Add("SU: ");
             incomeColumn.Add("Løn: ");
 
@@ -149,27 +108,30 @@ namespace Budget_Beregner
             expenseColumn.Add("Husleje: ");
             expenseColumn.Add("Streaming tjenester: ");
             expenseColumn.Add("Opsparing: ");
+            columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
             Console.WriteLine("Indtast indkomster:");
+
             for (int i = 0; i < incomeColumn.Count; i++)
             {
                 Console.WriteLine(incomeColumn[i]);
             }
             Console.WriteLine("\nIndtast Udgifter:");
+
             for (int i = 0; i < expenseColumn.Count; i++)
             {
                 Console.WriteLine(expenseColumn[i]);
             }
 
             // HACK: Only works if there's exactly 2 types of income. Hacked for demo purposes.
-            for (int i = 0; i < columnamount; i++)
+            for (int i = 0; i < columnAmount; i++)
             {
                 if (i < 2)
                 {
                     InputIncome();
                 }
-              
+
                 if (i == 2)
                 {
                     column += 2;
@@ -181,7 +143,7 @@ namespace Budget_Beregner
                 }
 
             }
-          
+
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
             Console.WriteLine("Vil du gemme dit budget? Y/N");
@@ -200,11 +162,86 @@ namespace Budget_Beregner
             Income.Clear();
             Expenses.Clear();
             Console.ReadKey();
+            columnAmount = 0;
         }
 
         public void TemplatePersonal()
         {
             throw new NotImplementedException();
+        }
+
+        private void InputIncome()
+        {
+            for (int i = 0; i < columnAmount; i++)
+            {
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out incomeNumber))
+                {
+                    Console.SetCursorPosition(row, column);
+                    Income.Add(incomeNumber);
+                    column += 1;
+                    i++;
+                }
+
+                else
+                {
+                    Console.SetCursorPosition(row + 10, column);
+                    Console.WriteLine("Indtast venligst et tal.");
+                    Console.ReadKey();
+                    Console.SetCursorPosition(row + 10, column);
+                    Console.Write("                                    ");
+                    Console.SetCursorPosition(row, column);
+                    Console.Write("                   ");
+                    Console.SetCursorPosition(row, column);
+                }
+            }
+        }
+
+        private void InputExpense()
+        {
+            for (int i = 0; i < columnAmount; i++)
+            {
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out expenseNumber))
+                {
+                    Console.SetCursorPosition(row, column);
+                    Income.Add(expenseNumber);
+                    column += 1;
+                }
+
+                else
+                {
+                    Console.SetCursorPosition(row + 10, column);
+                    Console.WriteLine("Indtast venligst et tal.");
+                    Console.ReadKey();
+                    Console.SetCursorPosition(row + 10, column);
+                    Console.Write("                                    ");
+                    Console.SetCursorPosition(row, column);
+                    Console.Write("                   ");
+                    Console.SetCursorPosition(row, column);
+                }
+            }
+
+            //        try
+            //        {
+            //            Console.SetCursorPosition(row, column);
+            //            Expenses.Add(int.Parse(Console.ReadLine()));
+            //            column += 1;
+            //        }
+
+            //        catch (Exception)
+            //        {
+            //            Console.SetCursorPosition(row + 10, column);
+            //            Console.WriteLine("Indtast venligst et tal.");
+            //            Console.ReadKey();
+            //            Console.SetCursorPosition(row + 10, column);
+            //            Console.Write("                                    ");
+            //            Console.SetCursorPosition(row, column);
+            //            Console.Write("                   ");
+            //            Console.SetCursorPosition(row, column);
+            //        }
         }
     }
 }
