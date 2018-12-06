@@ -57,24 +57,9 @@ namespace Budget_Beregner
                 Console.WriteLine(expenseColumn[i]);
             }
 
-            for (int i = 0; i < columnAmount; i++)
-            {
-                if (i < 4)
-                {
-                    InputIncome();
-                }
-
-                if (i == 4)
-                {
-                    column += 2;
-                }
-
-                if (i >= 4)
-                {
-                    InputExpense();
-                }
-
-            }
+            InputIncome();
+            column += 2;
+            InputExpense();
 
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
@@ -98,7 +83,7 @@ namespace Budget_Beregner
 
         public void TemplateSimple()
         {
-            row = 20;
+            row = 30;
             column = 2;
             columnAmount = 6;
             incomeColumn.Add("SU: ");
@@ -125,24 +110,11 @@ namespace Budget_Beregner
             }
 
             // HACK: Only works if there's exactly 2 types of income. Hacked for demo purposes.
-            for (int i = 0; i < columnAmount; i++)
-            {
-                if (i < 2)
-                {
-                    InputIncome();
-                }
 
-                if (i == 2)
-                {
-                    column += 2;
-                }
-
-                if (i >= 2)
-                {
-                    InputExpense();
-                }
-
-            }
+            InputIncome();           
+            column += 2;          
+            InputExpense();
+            
 
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
@@ -172,13 +144,13 @@ namespace Budget_Beregner
 
         private void InputIncome()
         {
-            for (int i = 0; i < columnAmount; i++)
+            for (int i = 0; i < incomeColumn.Count;)
             {
+                Console.SetCursorPosition(row, column);
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out incomeNumber))
                 {
-                    Console.SetCursorPosition(row, column);
                     Income.Add(incomeNumber);
                     column += 1;
                     i++;
@@ -187,7 +159,8 @@ namespace Budget_Beregner
                 else
                 {
                     Console.SetCursorPosition(row + 10, column);
-                    Console.WriteLine("Indtast venligst et tal.");
+                    Console.WriteLine("Indtast venligst et tal. ");
+                    Console.SetCursorPosition(row + 35, column);
                     Console.ReadKey();
                     Console.SetCursorPosition(row + 10, column);
                     Console.Write("                                    ");
@@ -200,21 +173,23 @@ namespace Budget_Beregner
 
         private void InputExpense()
         {
-            for (int i = 0; i < columnAmount; i++)
+            for (int i = 0; i < expenseColumn.Count;)
             {
+                Console.SetCursorPosition(row, column);
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out expenseNumber))
-                {
-                    Console.SetCursorPosition(row, column);
-                    Income.Add(expenseNumber);
+                {                    
+                    Expenses.Add(expenseNumber);
                     column += 1;
+                    i++;
                 }
 
                 else
                 {
                     Console.SetCursorPosition(row + 10, column);
                     Console.WriteLine("Indtast venligst et tal.");
+                    Console.SetCursorPosition(row + 35, column);
                     Console.ReadKey();
                     Console.SetCursorPosition(row + 10, column);
                     Console.Write("                                    ");
@@ -223,25 +198,6 @@ namespace Budget_Beregner
                     Console.SetCursorPosition(row, column);
                 }
             }
-
-            //        try
-            //        {
-            //            Console.SetCursorPosition(row, column);
-            //            Expenses.Add(int.Parse(Console.ReadLine()));
-            //            column += 1;
-            //        }
-
-            //        catch (Exception)
-            //        {
-            //            Console.SetCursorPosition(row + 10, column);
-            //            Console.WriteLine("Indtast venligst et tal.");
-            //            Console.ReadKey();
-            //            Console.SetCursorPosition(row + 10, column);
-            //            Console.Write("                                    ");
-            //            Console.SetCursorPosition(row, column);
-            //            Console.Write("                   ");
-            //            Console.SetCursorPosition(row, column);
-            //        }
         }
     }
 }
