@@ -35,7 +35,7 @@ namespace BudgetLibrary
                 }                
             }
 
-            Console.WriteLine("Dit budget er blevet gemt :D");
+            Console.WriteLine("\nDit budget er blevet gemt.");
                 
         }
     }
