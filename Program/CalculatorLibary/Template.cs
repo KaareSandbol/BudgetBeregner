@@ -15,15 +15,37 @@ namespace Budget_Beregner
         List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
+        // TODO: Burde det ikke være en lokal variabel for hver metode så vi ikke behøver at Clear() den hvad gang?
         int columnAmount = 0; 
         int incomeNumber = 0;
         int expenseNumber = 0;
 
+        public void CalculateAndSaveBudget()
+        {
+            BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Console.WriteLine("Vil du gemme dit budget? Y/N");
+            string save = Console.ReadLine();
+            if (save is "y" || save is "Y")
+            {
+                budgetRepo.SaveBudget(incomeColumn, expenseColumn, Income, Expenses);
+                Console.ReadKey();
+            }
+            else if (save is "n" || save is "N")
+            {
+                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
+            }
+            incomeColumn.Clear();
+            expenseColumn.Clear();
+            Income.Clear();
+            Expenses.Clear();
+            Console.ReadKey();
+            columnAmount = 0;
+        }
         public void TemplateAdvanced()
         {
             row = 30;
             column = 2;
-            columnAmount = 18;
             incomeColumn.Add("SU: ");
             incomeColumn.Add("Løn: ");
             incomeColumn.Add("Boligstøtte: ");
@@ -60,32 +82,13 @@ namespace Budget_Beregner
             InputIncome();
             column += 2;
             InputExpense();
-
-            BudgetRepository budgetRepo = new BudgetRepository();
-            Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
-            Console.WriteLine("Vil du gemme dit budget? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                budgetRepo.SaveBudget(incomeColumn, expenseColumn, Income, Expenses);
-            }
-            else if (save is "n" || save is "N")
-            {
-                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
-            }
-            incomeColumn.Clear();
-            expenseColumn.Clear();
-            Income.Clear();
-            Expenses.Clear();
-            Console.ReadKey();
-            columnAmount = 0;
+            CalculateAndSaveBudget();
         }
 
         public void TemplateSimple()
         {
             row = 30;
             column = 2;
-            columnAmount = 6;
             incomeColumn.Add("SU: ");
             incomeColumn.Add("Løn: ");
 
@@ -114,32 +117,20 @@ namespace Budget_Beregner
             InputIncome();           
             column += 2;          
             InputExpense();
-            
-
-            BudgetRepository budgetRepo = new BudgetRepository();
-            Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
-            Console.WriteLine("Vil du gemme dit budget? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                budgetRepo.SaveBudget(incomeColumn, expenseColumn, Income, Expenses);
-                Console.ReadKey();
-            }
-            else if (save is "n" || save is "N")
-            {
-                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
-            }
-            incomeColumn.Clear();
-            expenseColumn.Clear();
-            Income.Clear();
-            Expenses.Clear();
-            Console.ReadKey();
-            columnAmount = 0;
+            CalculateAndSaveBudget(); 
         }
 
         public void TemplatePersonal()
         {
-            throw new NotImplementedException();
+            row = 30;
+            column = 2;
+
+
+
+            InputIncome();
+            column += 2;
+            InputExpense();
+            CalculateAndSaveBudget();
         }
 
         private void InputIncome()

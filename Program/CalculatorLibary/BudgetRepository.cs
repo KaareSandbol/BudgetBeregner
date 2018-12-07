@@ -36,7 +36,7 @@ namespace BudgetLibrary
                 sw.WriteLine("Rødighedsbeløb: "+CalculatorDisposable(incomeList, expensesList));
             }
 
-            Console.WriteLine("Dit budget er blevet gemt :D");
+            Console.WriteLine("\nDit budget er blevet gemt.");
                 
         }
 
