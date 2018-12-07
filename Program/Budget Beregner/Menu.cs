@@ -16,7 +16,7 @@ namespace Budget_Beregner
             do
             {
                 Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;                
+                Console.ForegroundColor = ConsoleColor.Black;                   
                 ShowMenu();
                 string choice = GetUserChoice();
                 switch (choice)
@@ -74,7 +74,7 @@ namespace Budget_Beregner
             Console.WriteLine("--== Velkommen til AL budget beregner! ==--");
             Console.WriteLine("Vælg venligst en af nedenstående menupunkter...");
             Console.WriteLine();
-            Console.WriteLine("1. Vis budget - NA");
+            Console.WriteLine("1. Vis budget");
             Console.WriteLine("2. Lav et budget");
             Console.WriteLine("0. Exit");
         }
@@ -99,7 +99,10 @@ namespace Budget_Beregner
         // TODO: Implement ShowBudget()
         private void ShowBudget()
         {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
+            BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine("Skriv navnet på det budget du vil hente: (Skal være et der er gemt gennem dette program)");
+            string path = Console.ReadLine();
+            budgetRepo.LoadBudget(path);
             Console.ReadKey();
         }
    
