@@ -59,6 +59,7 @@ namespace Budget_Beregner
                         budget.TemplateAdvanced();
                         break;
                     case "3":
+                        budget.TemplatePersonal();
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
@@ -86,7 +87,7 @@ namespace Budget_Beregner
             Console.WriteLine();
             Console.WriteLine("1. Lav simpelt budget");
             Console.WriteLine("2. Lav avanceret budget");
-            Console.WriteLine("3. Lav eget budget - NA");
+            Console.WriteLine("3. Lav eget budget");
             Console.WriteLine("0. Gå tilbage til forrige menu");
         }
 
