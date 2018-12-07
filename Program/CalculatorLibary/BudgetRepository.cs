@@ -33,7 +33,7 @@ namespace BudgetLibrary
                 {
                     sw.WriteLine(expenseColumn[i]+" "+expensesList[i]);
                 }
-                sw.WriteLine("Rødighedsbeløb: "+CalculatorDisposable(incomeList, expensesList));
+                sw.WriteLine("\nRådighedsbeløb: "+CalculatorDisposable(incomeList, expensesList));
             }
 
             Console.WriteLine("\nDit budget er blevet gemt.");
@@ -42,6 +42,7 @@ namespace BudgetLibrary
 
         public void LoadBudget(string path)
         {           
+            // TODO: Add en exception for hvis man ikke vælger en gyldig fil
             using (StreamReader sr = new StreamReader(path))
             {
                 Console.Clear();
