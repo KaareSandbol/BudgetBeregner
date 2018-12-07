@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget Beregner", "Budget Beregner\Budget Beregner.csproj", "{E02A091A-D95A-489B-8FBC-6250543C6351}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget_Beregner", "Budget Beregner\Budget_Beregner.csproj", "{E02A091A-D95A-489B-8FBC-6250543C6351}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetLibrary", "CalculatorLibary\BudgetLibrary.csproj", "{0A89E2AD-05B0-4347-A815-58D94ABF36FD}"
 EndProject

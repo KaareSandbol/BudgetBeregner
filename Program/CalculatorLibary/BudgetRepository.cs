@@ -32,11 +32,28 @@ namespace BudgetLibrary
                 for (int i = 0; i < expenseColumn.Count; i++)
                 {
                     sw.WriteLine(expenseColumn[i]+" "+expensesList[i]);
-                }                
+                }
+                sw.WriteLine("Rødighedsbeløb: "+CalculatorDisposable(incomeList, expensesList));
             }
 
             Console.WriteLine("Dit budget er blevet gemt :D");
                 
+        }
+
+        public void LoadBudget(string path)
+        {           
+            using (StreamReader sr = new StreamReader(path))
+            {
+                Console.Clear();
+                Console.WriteLine("Budget: ");
+                Console.WriteLine("");
+                while (sr.ReadLine() != null)
+                {
+                  Console.WriteLine(sr.ReadLine());
+                }
+ 
+
+            }
         }
     }
 }
