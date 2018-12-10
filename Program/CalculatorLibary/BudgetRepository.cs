@@ -43,19 +43,26 @@ namespace BudgetLibrary
         public void LoadBudget(string path)
         {
             string line;
-            // TODO: Add en exception for hvis man ikke vælger en gyldig fil
-            using (StreamReader sr = new StreamReader(path))
-            {
-                Console.Clear();
-                Console.WriteLine("Budget: ");
-                Console.WriteLine("");
-                
-                while ((line = sr.ReadLine()) != null)
-                {
-                  Console.WriteLine(line);
-                }
- 
 
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Budget: ");
+                    Console.WriteLine("");
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Vælg venligst et eksisterende budget");
+                throw e;
             }
         }
     }
