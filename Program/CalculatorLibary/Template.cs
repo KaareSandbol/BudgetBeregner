@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Budget_Beregner
 {
-     public class Template
+    public class Template
     {
         List<string> incomeColumn = new List<string>();
         List<string> expenseColumn = new List<string>();
@@ -16,7 +16,7 @@ namespace Budget_Beregner
         int row = 0;
         int column = 0;
         // TODO: Burde det ikke være en lokal variabel for hver metode så vi ikke behøver at Clear() den hvad gang?
-        int columnAmount = 0; 
+        int columnAmount = 0;
         int incomeNumber = 0;
         int expenseNumber = 0;
 
@@ -105,65 +105,78 @@ namespace Budget_Beregner
             Console.WriteLine("Indtast indkomster:");
 
             PrintIncomeAndExpense();
-            InputIncome();           
-            column += 2;          
+            InputIncome();
+            column += 2;
             InputExpense();
-            CalculateAndSaveBudget(); 
+            CalculateAndSaveBudget();
         }
 
         // TODO: Split this shit into methods for reusability
         public void TemplatePersonal()
         {
+            bool looping = true;
             bool exit = true;
-            row = 30;
             column = 2;
 
+            Console.Clear();
             Console.WriteLine("Velkommen til dit eget personlige budget!");
             Console.WriteLine("Indtast indkomster, navn og værdi, og afslut med 'ENTER':");
 
             while (exit)
             {
+                looping = true;
+                row = 0;
                 Console.SetCursorPosition(row, column);
                 string input = Console.ReadLine();
 
+                // Exits out of income input
                 if (input.Equals(string.Empty))
                 {
                     exit = false;
+                    column += 2;
                 }
 
                 else if (input is string)
                 {
-                    expenseColumn.Add(input);
-                }
+                    incomeColumn.Add(input + ":");
+                    row = 30;
 
-                else
-                {
-                    if (int.TryParse(input, out incomeNumber))
+                    while (looping)
                     {
-                        Income.Add(incomeNumber);
-                        column += 1;
-                    }
+                        Console.SetCursorPosition(row, column);
+                        input = Console.ReadLine();
 
-                    else
-                    {
-                        Console.SetCursorPosition(row + 10, column);
-                        Console.WriteLine("Indtast venligst et tal. ");
-                        Console.SetCursorPosition(row + 35, column);
-                        Console.ReadKey();
-                        Console.SetCursorPosition(row + 10, column);
-                        Console.Write("                                    ");
-                        Console.SetCursorPosition(row, column);
-                        Console.Write("                   ");
-                        Console.SetCursorPosition(row, column);
+                        if (int.TryParse(input, out incomeNumber))
+                        {
+                            Income.Add(incomeNumber);
+                            column += 1;
+                            looping = false;
+                        }
+
+                        else
+                        {
+                            Console.SetCursorPosition(row + 10, column);
+                            Console.WriteLine("Indtast venligst et tal. ");
+                            Console.SetCursorPosition(row + 35, column);
+                            Console.ReadKey();
+                            Console.SetCursorPosition(row + 10, column);
+                            Console.Write("                                    ");
+                            Console.SetCursorPosition(row, column);
+                            Console.Write("                   ");
+                            Console.SetCursorPosition(row, column);
+                        }
                     }
                 }
             }
 
+            looping = true;
             exit = true;
             Console.WriteLine("Indtast udgifter, navn og værdi, og afslut med 'ENTER':");
 
             while (exit)
             {
+                looping = true;
+                row = 0;
                 Console.SetCursorPosition(row, column);
                 string input = Console.ReadLine();
 
@@ -174,31 +187,37 @@ namespace Budget_Beregner
 
                 else if (input is string)
                 {
-                    incomeColumn.Add(input);
-                }
+                    expenseColumn.Add(input + ":");
+                    row = 30;
 
-                else
-                {
-                    if (int.TryParse(input, out expenseNumber))
+                    while (looping)
                     {
-                        Expenses.Add(expenseNumber);
-                        column += 1;
-                    }
+                        Console.SetCursorPosition(row, column);
+                        input = Console.ReadLine();
 
-                    else
-                    {
-                        Console.SetCursorPosition(row + 10, column);
-                        Console.WriteLine("Indtast venligst et tal.");
-                        Console.SetCursorPosition(row + 35, column);
-                        Console.ReadKey();
-                        Console.SetCursorPosition(row + 10, column);
-                        Console.Write("                                    ");
-                        Console.SetCursorPosition(row, column);
-                        Console.Write("                   ");
-                        Console.SetCursorPosition(row, column);
+                        if (int.TryParse(input, out expenseNumber))
+                        {
+                            Expenses.Add(expenseNumber);
+                            column += 1;
+                            looping = false;
+                        }
+
+                        else
+                        {
+                            Console.SetCursorPosition(row + 10, column);
+                            Console.WriteLine("Indtast venligst et tal.");
+                            Console.SetCursorPosition(row + 35, column);
+                            Console.ReadKey();
+                            Console.SetCursorPosition(row + 10, column);
+                            Console.Write("                                    ");
+                            Console.SetCursorPosition(row, column);
+                            Console.Write("                   ");
+                            Console.SetCursorPosition(row, column);
+                        }
                     }
                 }
             }
+
             CalculateAndSaveBudget();
         }
 
@@ -239,7 +258,7 @@ namespace Budget_Beregner
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out expenseNumber))
-                {                    
+                {
                     Expenses.Add(expenseNumber);
                     column += 1;
                     i++;
