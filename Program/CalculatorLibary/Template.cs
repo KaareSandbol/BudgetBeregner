@@ -146,6 +146,7 @@ namespace Budget_Beregner
 
                         if (int.TryParse(input, out incomeNumber))
                         {
+                            //TODO: if incomeNumber = 0 dont add it
                             Income.Add(incomeNumber);
                             column += 1;
                             looping = false;
