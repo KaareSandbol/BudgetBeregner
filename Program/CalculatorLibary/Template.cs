@@ -15,7 +15,6 @@ namespace Budget_Beregner
         List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
-        // TODO: Burde det ikke være en lokal variabel for hver metode så vi ikke behøver at Clear() den hvad gang?
         int columnAmount = 0;
         int incomeNumber = 0;
         int expenseNumber = 0;
@@ -111,7 +110,6 @@ namespace Budget_Beregner
             CalculateAndSaveBudget();
         }
 
-        // TODO: Split this shit into methods for reusability
         public void TemplatePersonal()
         {
             bool looping = true;

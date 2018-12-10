@@ -59,10 +59,9 @@ namespace BudgetLibrary
                 }
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("Vælg venligst et eksisterende budget");
-                throw e;
+                Console.WriteLine("Ugyldigt budgetnavn");
             }
         }
     }

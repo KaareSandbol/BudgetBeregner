@@ -68,7 +68,6 @@ namespace Budget_Beregner
                 }
             } while (menuType);
         }
-        // TODO: Additional menu with diffecent budget types for choice
         private void ShowMenu()
         {
             Console.Clear();
@@ -79,7 +78,6 @@ namespace Budget_Beregner
             Console.WriteLine("2. Lav et budget");
             Console.WriteLine("0. Exit");
         }
-        // TODO: Give the ability to choose and run the method
         private void ShowBudgetMenu()
         {
             Console.Clear();
@@ -97,31 +95,14 @@ namespace Budget_Beregner
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
         }
-        // TODO: Implement ShowBudget()
         private void ShowBudget()
         {
+            Console.Clear();
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("Skriv navnet på det budget du vil hente: (Skal være et der er gemt gennem dette program)");
             string path = Console.ReadLine();
             budgetRepo.LoadBudget(path);
             Console.ReadKey();
-        }
-   
-        // TODO: Implement CreateBudgetPersonal()
-        private void CreateBudgetPersonal()
-        {
-            Console.WriteLine("IKKE IMPLEMENTERET ENDNU...");
-            Console.ReadKey();
-        }
-        // TODO: Implement SaveBudget()
-        private void SaveBudget()
-        {
-            throw new NotImplementedException();
-        }
-        // TODO: Implement LoadBudget()
-        private void LoadBudget()
-        {
-            throw new NotImplementedException();
         }
     }
 }
