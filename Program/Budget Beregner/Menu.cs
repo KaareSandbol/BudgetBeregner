@@ -99,7 +99,7 @@ namespace Budget_Beregner
         {
             Console.Clear();
             BudgetRepository budgetRepo = new BudgetRepository();
-            Console.WriteLine("Skriv navnet på det budget du vil hente: (Skal være et der er gemt gennem dette program)");
+            Console.Write("Skriv navnet på det budget du vil hente: ");
             string path = Console.ReadLine();
             budgetRepo.LoadBudget(path);
             Console.ReadKey();

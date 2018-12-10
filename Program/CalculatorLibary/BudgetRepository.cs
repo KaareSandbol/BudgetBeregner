@@ -61,7 +61,7 @@ namespace BudgetLibrary
 
             catch (Exception)
             {
-                Console.WriteLine("Ugyldigt budgetnavn");
+                Console.WriteLine("\nUgyldigt budgetnavn.");
             }
         }
     }
