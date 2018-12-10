@@ -132,18 +132,70 @@ namespace Budget_Beregner
                 Console.Write(new string(' ', Console.LargestWindowWidth));
                 Console.SetCursorPosition(10, 0);
                 Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("SU: ");
+                Console.SetCursorPosition(10, 2);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Income.Add(int.Parse(Console.ReadLine()));
+            }
+            
+            Console.SetCursorPosition(10, 3);
+            try
+            {
+                Income.Add(int.Parse(Console.ReadLine()));
+            }
+            catch (Exception)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.WriteLine("Indtast venligst et tal.");
+                Console.ReadKey();
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
                 Console.SetCursorPosition(10, 0);
                 Console.WriteLine("SU: ");
                 Console.SetCursorPosition(10, 2);
             }
-            Income.Add(int.Parse(Console.ReadLine()));            
-            Console.SetCursorPosition(10, 3);
-            Income.Add(int.Parse(Console.ReadLine()));
 
             Console.SetCursorPosition(10, 6);
-            Expenses.Add(int.Parse(Console.ReadLine()));
+            try
+            {
+                Expenses.Add(int.Parse(Console.ReadLine()));
+            }
+            catch (Exception)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.WriteLine("Indtast venligst et tal.");
+                Console.ReadKey();
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.WriteLine("SU: ");
+                Console.SetCursorPosition(10, 2);
+            }
+            
             Console.SetCursorPosition(10, 7);
-            Expenses.Add(int.Parse(Console.ReadLine()));
+            try
+            {
+                Expenses.Add(int.Parse(Console.ReadLine()));
+            }
+            catch (Exception)
+            {
+                Console.SetCursorPosition(0, 10);
+                Console.WriteLine("Indtast venligst et tal.");
+                Console.ReadKey();
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.Write(new string(' ', Console.LargestWindowWidth));
+                Console.SetCursorPosition(10, 0);
+                Console.WriteLine("SU: ");
+                Console.SetCursorPosition(10, 2);
+            }
+
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("Dit rådighedsbeløb er: "+ budgetRepo.CalculatorDisposable(Income, Expenses));
             Console.ReadKey();
