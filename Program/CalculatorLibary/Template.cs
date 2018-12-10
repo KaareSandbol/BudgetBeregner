@@ -36,7 +36,7 @@ namespace Budget_Beregner
         public void CalculateAndSaveBudget()
         {
             BudgetRepository budgetRepo = new BudgetRepository();
-            Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculatorDisposable(Income, Expenses));
+            Console.WriteLine("\nDit rådighedsbeløb er: " + budgetRepo.CalculateDisposableIncome(Income, Expenses));
             Console.WriteLine("Vil du gemme dit budget? Y/N");
             string save = Console.ReadLine();
             if (save is "y" || save is "Y")

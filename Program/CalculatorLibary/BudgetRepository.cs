@@ -9,7 +9,7 @@ namespace BudgetLibrary
 {
     public class BudgetRepository
     {
-        public int CalculatorDisposable(List<int> IncomeList, List<int> ExpensesList)
+        public int CalculateDisposableIncome(List<int> IncomeList, List<int> ExpensesList)
         {
             int incomeSum = IncomeList.Sum();
             int expensesSum = ExpensesList.Sum();
@@ -33,7 +33,7 @@ namespace BudgetLibrary
                 {
                     sw.WriteLine(expenseColumn[i]+" "+expensesList[i]);
                 }
-                sw.WriteLine("\nRådighedsbeløb: "+CalculatorDisposable(incomeList, expensesList));
+                sw.WriteLine("\nRådighedsbeløb: "+CalculateDisposableIncome(incomeList, expensesList));
             }
 
             Console.WriteLine("\nDit budget er blevet gemt.");
