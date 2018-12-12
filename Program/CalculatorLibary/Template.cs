@@ -51,7 +51,6 @@ namespace Budget_Beregner
             expenseColumn.Clear();
             Income.Clear();
             Expenses.Clear();
-            Console.ReadKey();
             columnAmount = 0;
         }
         public void TemplateAdvanced()

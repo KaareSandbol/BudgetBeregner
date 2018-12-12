@@ -9,10 +9,10 @@ namespace BudgetLibrary
 {
     public class BudgetRepository
     {
-        public int CalculateDisposableIncome(List<int> IncomeList, List<int> ExpensesList)
+        public int CalculateDisposableIncome(List<int> incomeList, List<int> expensesList)
         {
-            int incomeSum = IncomeList.Sum();
-            int expensesSum = ExpensesList.Sum();
+            int incomeSum = incomeList.Sum();
+            int expensesSum = expensesList.Sum();
             return incomeSum - expensesSum;
         }
 
@@ -25,13 +25,19 @@ namespace BudgetLibrary
                 sw.WriteLine("Indtægter");
                 for (int i = 0; i < incomeColumn.Count; i++)
                 {
-                    sw.WriteLine(incomeColumn[i]+" "+incomeList[i]);
+                    if (incomeList[i] != 0)
+                    {
+                        sw.WriteLine(incomeColumn[i] + " " + incomeList[i]);
+                    }                    
                 }
                 sw.WriteLine();
                 sw.WriteLine("Udgifter");
                 for (int i = 0; i < expenseColumn.Count; i++)
                 {
-                    sw.WriteLine(expenseColumn[i]+" "+expensesList[i]);
+                    if (expensesList[i] != 0)
+                    {
+                        sw.WriteLine(expenseColumn[i] + " " + expensesList[i]);
+                    }                    
                 }
                 sw.WriteLine("\nRådighedsbeløb: "+CalculateDisposableIncome(incomeList, expensesList));
             }
