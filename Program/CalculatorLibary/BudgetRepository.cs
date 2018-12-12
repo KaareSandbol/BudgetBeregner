@@ -57,7 +57,6 @@ namespace BudgetLibrary
                     Console.Clear();
                     Console.WriteLine("Budget: ");
                     Console.WriteLine("");
-                    //TODO: Don't print row that has a value of 0.
                     while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
