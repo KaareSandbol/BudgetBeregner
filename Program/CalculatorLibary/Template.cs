@@ -48,7 +48,7 @@ namespace Budget_Beregner
                 Console.WriteLine(expenseColumn[i]);
             }
         }
-
+        //Splitted methods
         public void CalculateBudget()
         {
             BudgetRepository budgetRepo = new BudgetRepository();
