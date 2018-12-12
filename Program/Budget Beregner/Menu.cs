@@ -72,21 +72,20 @@ namespace Budget_Beregner
         {
             Console.Clear();
             Console.WriteLine("--== Velkommen til AL budget beregner! ==--");
-            Console.WriteLine("Vælg venligst en af nedenstående menupunkter...");
-            Console.WriteLine();
-            Console.WriteLine("1. Vis budget");
-            Console.WriteLine("2. Lav et budget");
-            Console.WriteLine("0. Exit");
+            Console.WriteLine("Vælg venligst en af nedenstående menupunkter:\n");
+            Console.WriteLine("1. Vis budget.\n");
+            Console.WriteLine("2. Lav et budget.\n");
+            Console.WriteLine("0. Exit.\n");
         }
         private void ShowBudgetMenu()
         {
             Console.Clear();
             Console.WriteLine("--== Vælg hvilket budget du vil lægge ==--");
             Console.WriteLine();
-            Console.WriteLine("1. Lav simpelt budget");
-            Console.WriteLine("2. Lav avanceret budget");
-            Console.WriteLine("3. Lav eget budget");
-            Console.WriteLine("0. Gå tilbage til forrige menu");
+            Console.WriteLine("1. Lav simpelt budget - Simpelt budget som er målrettet mod den hjemmeboende studerende i alderen 18-25.\n");
+            Console.WriteLine("2. Lav advanceret budget - Advanceret budget som er målrettet mod den udeboende studerende i alderen 18-25.\n");
+            Console.WriteLine("3. Lav eget budget - Lav personligt budget med egne indkomster og udgifter.\n");
+            Console.WriteLine("0. Gå tilbage til forrige menu.\n");
         }
 
         private string GetUserChoice()
