@@ -39,35 +39,75 @@ namespace BudgetLibrary
                         sw.WriteLine(expenseColumn[i] + " " + expensesList[i]);
                     }                    
                 }
-                sw.WriteLine("\nRådighedsbeløb: "+CalculateDisposableIncome(incomeList, expensesList));
+                sw.WriteLine("_____________________________________");
+                sw.WriteLine("Rådighedsbeløb: "+CalculateDisposableIncome(incomeList, expensesList));
             }
 
-            Console.WriteLine("\nDit budget er blevet gemt.");
-                
+            Console.WriteLine("\nDit budget er blevet gemt.");                
         }
 
         public void LoadBudget(string path)
         {
             string line;
+            int curserIncomeCount = 0;
 
             try
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
+                    int count = 2;
+                    
                     Console.Clear();
                     Console.WriteLine("Budget: ");
                     Console.WriteLine("");
+                    List<string> allLines = new List<string>();
+                    List<string> income = new List<string>();
+                    List<string> expenses = new List<string>();
+                    List<int> incomeAmount = new List<int>();
+                    List<int> expensesAmount = new List<int>();
                     //TODO: Don't print row that has a value of 0.
                     while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
+
+                        if (line == "")
+                        {
+                            curserIncomeCount = count;
+                        }
+                        count++;
+
+                        allLines = line.Split(':').ToList();
+                          
+                        for (int i = 0; i < allLines.Count(); i++)
+                        {                            
+                            if (allLines.Count() > 1)
+                            {
+                                if (curserIncomeCount < allLines.Count())
+                                {
+                                    income.Add(allLines[i]);
+                                    i++;
+                                    incomeAmount.Add(int.Parse(allLines[i]));
+                                }
+                                if (curserIncomeCount >= allLines.Count())
+                                {
+                                    expenses.Add(allLines[i]);
+                                    i++;
+                                    expensesAmount.Add(int.Parse(allLines[i]));
+                                }
+                            }                                                                                           
+                        }                                                                       
                     }
                 }
             }
-
             catch (Exception)
             {
                 Console.WriteLine("\nUgyldigt budgetnavn.");
+            }
+            Console.WriteLine("\nVil du redigere i dette budget? Y/N");
+            if (Console.ReadLine() == "y" || Console.ReadLine() == "Y")
+            {
+                Console.SetCursorPosition(0,curserIncomeCount);
+                
             }
         }
     }
