@@ -325,7 +325,11 @@ namespace Budget_Beregner
             }
             else if (save is "n" || save is "N")
             {
+                Console.SetCursorPosition(row = 0, column + 1);
+                Console.WriteLine("                                                           ");
+                Console.WriteLine("                                                           ");
 
+                column += 4;
             }
         }
 
