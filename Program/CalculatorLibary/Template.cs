@@ -35,10 +35,15 @@ namespace Budget_Beregner
 
         public void PrintIncome()
         {
-            for (int i = 0; i < incomeColumn.Count; i++)
+            foreach (string name in incomeColumn)
             {
-                Console.WriteLine(incomeColumn[i]);
+                Design.Padding(name);  
             }
+                    
+            //for (int i = 0; i < incomeColumn.Count; i++)
+            //{
+            //    Console.WriteLine(incomeColumn[i]);
+            //}
         }
 
         public void PrintExpenses()
