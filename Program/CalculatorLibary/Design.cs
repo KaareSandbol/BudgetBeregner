@@ -15,7 +15,7 @@ namespace BudgetLibrary
 
         public static void Padding(string mystring)
         {
-            Console.WriteLine("|  " + mystring.PadRight(24, ' ') + "|");
+            Console.WriteLine("  |  " + mystring.PadRight(22, ' ') + "|");
         }
 
         public void FrameRight(string mystring)

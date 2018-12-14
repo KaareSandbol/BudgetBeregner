@@ -37,20 +37,15 @@ namespace Budget_Beregner
         {
             foreach (string name in incomeColumn)
             {
-                Design.Padding(name);  
+                Design.Padding(name);
             }
-                    
-            //for (int i = 0; i < incomeColumn.Count; i++)
-            //{
-            //    Console.WriteLine(incomeColumn[i]);
-            //}
         }
 
         public void PrintExpenses()
         {
-            for (int i = 0; i < expenseColumn.Count; i++)
+            foreach (string name in expenseColumn)
             {
-                Console.WriteLine(expenseColumn[i]);
+                Design.Padding(name);
             }
         }
         //Splitted methods
@@ -87,28 +82,28 @@ namespace Budget_Beregner
         {
             row = 30;
             column = 2;
-            incomeColumn.Add("SU: ");
-            incomeColumn.Add("Løn: ");
+            incomeColumn.Add("SU ");
+            incomeColumn.Add("Løn:");
 
-            expenseColumn.Add("Mobil: ");
-            expenseColumn.Add("Husleje: ");
-            expenseColumn.Add("Streaming tjenester: ");
-            expenseColumn.Add("Opsparing: ");
+            expenseColumn.Add("Mobil ");
+            expenseColumn.Add("Husleje ");
+            expenseColumn.Add("Streaming tjenester ");
+            expenseColumn.Add("Opsparing ");
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
-            Console.WriteLine("Indtast indkomster:");
-       
+            Design.Padding("Indtast indkomster");
+
             PrintIncome();
             InputIncome();
             ExtraIncome();
 
-            Console.WriteLine("Indtast Udgifter:");
-           
+            Design.Padding("Indtast Udgifter");
+
             PrintExpenses();
             row = 30;
             InputExpense();
-            ExtraExpense(); 
+            ExtraExpense();
 
             CalculateBudget();
             SaveBudget();
@@ -118,35 +113,35 @@ namespace Budget_Beregner
         {
             row = 30;
             column = 2;
-            incomeColumn.Add("SU: ");
-            incomeColumn.Add("Løn: ");
-            incomeColumn.Add("Boligstøtte: ");
-            incomeColumn.Add("Stipendier: ");
+            incomeColumn.Add("SU ");
+            incomeColumn.Add("Løn ");
+            incomeColumn.Add("Boligstøtte ");
+            incomeColumn.Add("Stipendier ");
 
-            expenseColumn.Add("Forsikring: ");
-            expenseColumn.Add("Husleje: ");
-            expenseColumn.Add("Aconto: ");
-            expenseColumn.Add("El: ");
-            expenseColumn.Add("A-kasse: ");
-            expenseColumn.Add("Mad: ");
-            expenseColumn.Add("Mobil: ");
-            expenseColumn.Add("Transport: ");
-            expenseColumn.Add("Internet/lincens: ");
-            expenseColumn.Add("Fitness og sport: ");
-            expenseColumn.Add("Streaming tjenester: ");
-            expenseColumn.Add("Opsparing: ");
+            expenseColumn.Add("Forsikring ");
+            expenseColumn.Add("Husleje ");
+            expenseColumn.Add("Aconto ");
+            expenseColumn.Add("El ");
+            expenseColumn.Add("A-kasse ");
+            expenseColumn.Add("Mad ");
+            expenseColumn.Add("Mobil ");
+            expenseColumn.Add("Transport ");
+            expenseColumn.Add("Internet/lincens ");
+            expenseColumn.Add("Fitness og sport ");
+            expenseColumn.Add("Streaming tjenester ");
+            expenseColumn.Add("Opsparing ");
 
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
 
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
-            Console.WriteLine("Indtast indkomster:");
+            Console.WriteLine("Indtast indkomster");
 
             PrintIncome();
             InputIncome();
             ExtraIncome();
 
-            Console.WriteLine("Indtast Udgifter:");
+            Console.WriteLine("Indtast Udgifter");
 
             PrintExpenses();
             row = 30;
@@ -240,7 +235,7 @@ namespace Budget_Beregner
 
                 else if (input is string)
                 {
-                    incomeColumn.Add(input + ":");
+                    incomeColumn.Add(input);
                     row = 30;
 
                     while (looping)
@@ -285,7 +280,7 @@ namespace Budget_Beregner
 
                 else if (input is string)
                 {
-                    expenseColumn.Add(input + ":");
+                    expenseColumn.Add(input);
                     row = 30;
 
                     while (looping)
@@ -312,29 +307,39 @@ namespace Budget_Beregner
         //TODO: Hvis den får andet input end y og n så bliver det helt fucked.
         public void ExtraIncome()
         {
+            bool close = true;
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nVil du tilføje ekstra indkomster? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                //TODO: Vil vi have den til kosntant at stå i højre side ligesom vi gør med vores error message.
-                Console.WriteLine("Afslut med 'ENTER'");
-                row = 0;
-                Console.SetCursorPosition(row, column);
-                Console.ReadKey();
-                Console.SetCursorPosition(row = 0, column + 1);
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                AddIncome();
-            }
-            else if (save is "n" || save is "N")
-            {
-                Console.SetCursorPosition(row = 0, column + 1);
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
 
-                column += 4;
+            while (close)
+            {
+                Console.SetCursorPosition(0, column + 2);
+                Console.WriteLine("        "); 
+                Console.SetCursorPosition(0, column + 2);
+                string save = Console.ReadLine();
+                if (save is "y" || save is "Y")
+                {
+                    //TODO: Vil vi have den til kosntant at stå i højre side ligesom vi gør med vores error message.
+                    Console.WriteLine("Afslut med 'ENTER'");
+                    row = 0;
+                    Console.SetCursorPosition(row, column);
+                    Console.ReadKey();
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    AddIncome();
+                    close = false;
+                }
+                else if (save is "n" || save is "N")
+                {
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+
+                    column += 4;
+                    close = false;
+                }
             }
         }
 
