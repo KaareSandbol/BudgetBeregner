@@ -80,10 +80,21 @@ namespace Budget_Beregner
             Console.WriteLine(@"                     __/ |                                __/ |                ");
             Console.WriteLine(@"                    |___/                                |___/                 ");
 
-            Console.WriteLine("\nVælg venligst en af nedenstående menupunkter:\n");
-            Console.WriteLine("1. Vis budget.\n");
-            Console.WriteLine("2. Lav et budget.\n");
-            Console.WriteLine("0. Exit.\n");
+
+            Console.WriteLine("\n" + "+=======+============================ +");
+            Console.WriteLine("| Punkt | Vælg venligst et menupunkt |");
+            Console.WriteLine("+=======+============================ +");
+            Console.WriteLine("| 1 | Vis budget |");
+            Console.WriteLine("+-------+----------------------------+");
+            Console.WriteLine("| 2 | Lav budget |");
+            Console.WriteLine("+-------+----------------------------+");
+            Console.WriteLine("| 0 | Exit |");
+            Console.WriteLine("+-------+----------------------------+");
+
+    //Console.WriteLine("\nVælg venligst en af nedenstående menupunkter:\n");
+    //        Console.WriteLine("1. Vis budget.\n");
+    //        Console.WriteLine("2. Lav et budget.\n");
+    //        Console.WriteLine("0. Exit.\n");
         }
         private void ShowBudgetMenu()
         {
