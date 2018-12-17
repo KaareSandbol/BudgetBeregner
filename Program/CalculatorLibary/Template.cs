@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Budget_Beregner
+namespace BudgetLibrary
 {
     public class Template
     {
-        List<string> incomeColumn = new List<string>();
-        List<string> expenseColumn = new List<string>();
-        List<int> Income = new List<int>();
-        List<int> Expenses = new List<int>();
+        public List<string> incomeColumn = new List<string>();
+        public List<string> expenseColumn = new List<string>();
+        public List<int> Income = new List<int>();
+        public List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
         int columnAmount = 0;
@@ -78,17 +78,39 @@ namespace Budget_Beregner
             columnAmount = 0;
         }
 
+        public void SaveEditedBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList, List<int> expensesList)
+        {
+            BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine("Vil du gemme dit budget? Y/N");
+            string save = Console.ReadLine();
+            if (save is "y" || save is "Y")
+            {
+                budgetRepo.SaveBudget(incomeColumn, expenseColumn, incomeList, expensesList);
+                Console.ReadKey();
+            }
+            else if (save is "n" || save is "N")
+            {
+                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
+            }
+
+            incomeColumn.Clear();
+            expenseColumn.Clear();
+            Income.Clear();
+            Expenses.Clear();
+            columnAmount = 0;
+        }
+
         public void TemplateSimple()
         {
             row = 30;
             column = 2;
-            incomeColumn.Add("SU ");
+            incomeColumn.Add("SU: ");
             incomeColumn.Add("Løn:");
 
-            expenseColumn.Add("Mobil ");
-            expenseColumn.Add("Husleje ");
-            expenseColumn.Add("Streaming tjenester ");
-            expenseColumn.Add("Opsparing ");
+            expenseColumn.Add("Mobil: ");
+            expenseColumn.Add("Husleje: ");
+            expenseColumn.Add("Streaming tjenester: ");
+            expenseColumn.Add("Opsparing: ");
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
@@ -113,23 +135,23 @@ namespace Budget_Beregner
         {
             row = 30;
             column = 2;
-            incomeColumn.Add("SU ");
-            incomeColumn.Add("Løn ");
-            incomeColumn.Add("Boligstøtte ");
-            incomeColumn.Add("Stipendier ");
+            incomeColumn.Add("SU: ");
+            incomeColumn.Add("Løn: ");
+            incomeColumn.Add("Boligstøtte: ");
+            incomeColumn.Add("Stipendier: ");
 
-            expenseColumn.Add("Forsikring ");
-            expenseColumn.Add("Husleje ");
-            expenseColumn.Add("Aconto ");
-            expenseColumn.Add("El ");
-            expenseColumn.Add("A-kasse ");
-            expenseColumn.Add("Mad ");
-            expenseColumn.Add("Mobil ");
-            expenseColumn.Add("Transport ");
-            expenseColumn.Add("Internet/lincens ");
-            expenseColumn.Add("Fitness og sport ");
-            expenseColumn.Add("Streaming tjenester ");
-            expenseColumn.Add("Opsparing ");
+            expenseColumn.Add("Forsikring: ");
+            expenseColumn.Add("Husleje: ");
+            expenseColumn.Add("Aconto: ");
+            expenseColumn.Add("El: ");
+            expenseColumn.Add("A-kasse: ");
+            expenseColumn.Add("Mad: ");
+            expenseColumn.Add("Mobil: ");
+            expenseColumn.Add("Transport: ");
+            expenseColumn.Add("Internet/lincens: ");
+            expenseColumn.Add("Fitness og sport: ");
+            expenseColumn.Add("Streaming tjenester: ");
+            expenseColumn.Add("Opsparing: ");
 
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
 
