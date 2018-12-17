@@ -48,7 +48,7 @@ namespace Budget_Beregner
                 Design.Padding(name);
             }
         }
-        //Splitted methods
+
         public void CalculateBudget()
         {
             BudgetRepository budgetRepo = new BudgetRepository();
@@ -224,6 +224,8 @@ namespace Budget_Beregner
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
+                Design.Padding("");
+                Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
                 // Exits out of income input
@@ -271,6 +273,8 @@ namespace Budget_Beregner
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
+                Design.Padding("");
+                Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
                 if (input.Equals(string.Empty))
@@ -317,18 +321,19 @@ namespace Budget_Beregner
                 Console.WriteLine("        "); 
                 Console.SetCursorPosition(0, column + 2);
                 string save = Console.ReadLine();
+
                 if (save is "y" || save is "Y")
                 {
-                    //TODO: Vil vi have den til kosntant at stå i højre side ligesom vi gør med vores error message.
                     Console.WriteLine("Afslut med 'ENTER'");
                     row = 0;
                     Console.SetCursorPosition(row, column);
-                    Console.ReadKey();
                     Console.SetCursorPosition(row = 0, column + 1);
                     Console.WriteLine("                                                           ");
                     Console.WriteLine("                                                           ");
                     Console.WriteLine("                                                           ");
                     AddIncome();
+                    Console.SetCursorPosition(row, column - 2);
+                    Console.WriteLine("                                                           ");
                     close = false;
                 }
                 else if (save is "n" || save is "N")
@@ -336,7 +341,7 @@ namespace Budget_Beregner
                     Console.SetCursorPosition(row = 0, column + 1);
                     Console.WriteLine("                                                           ");
                     Console.WriteLine("                                                           ");
-
+                    
                     column += 4;
                     close = false;
                 }
@@ -345,19 +350,33 @@ namespace Budget_Beregner
 
         public void ExtraExpense()
         {
+            bool close = true;
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nVil du tilføje ekstra udgifter? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                Console.SetCursorPosition(row = 0, column + 1);
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                AddExpense();
-            }
-            else if (save is "n" || save is "N")
-            {
 
+            while (close)
+            {
+                Console.SetCursorPosition(0, column + 2);
+                Console.WriteLine("        ");
+                Console.SetCursorPosition(0, column + 2);
+                string save = Console.ReadLine();
+
+                if (save is "y" || save is "Y")
+                {
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    AddExpense();
+                    Console.SetCursorPosition(row, column);
+                    Console.WriteLine("                                                           ");
+                    column += 1;
+                    close = false;
+                }
+
+                else if (save is "n" || save is "N")
+                {
+                    close = false;
+                }
             }
         }
     }
