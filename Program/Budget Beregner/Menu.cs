@@ -71,8 +71,16 @@ namespace Budget_Beregner
         private void ShowMenu()
         {
             Console.Clear();
-            Console.WriteLine("--== Velkommen til AL budget beregner! ==--");
-            Console.WriteLine("Vælg venligst en af nedenstående menupunkter:\n");
+            Console.WriteLine(@"  ____            _            _     _                                         ");
+            Console.WriteLine(@" |  _ \          | |          | |   | |                                        ");
+            Console.WriteLine(@" | |_) |_   _  __| | __ _  ___| |_  | |__   ___ _ __ ___  __ _ _ __   ___ _ __ ");
+            Console.WriteLine(@" |  _ <| | | |/ _` |/ _` |/ _ \ __| | '_ \ / _ \ '__/ _ \/ _` | '_ \ / _ \ '__|");
+            Console.WriteLine(@" | |_) | |_| | (_| | (_| |  __/ |_  | |_) |  __/ | |  __/ (_| | | | |  __/ |   ");
+            Console.WriteLine(@" |____/ \__,_|\__,_|\__, |\___|\__| |_.__/ \___|_|  \___|\__, |_| |_|\___|_|   ");
+            Console.WriteLine(@"                     __/ |                                __/ |                ");
+            Console.WriteLine(@"                    |___/                                |___/                 ");
+
+            Console.WriteLine("\nVælg venligst en af nedenstående menupunkter:\n");
             Console.WriteLine("1. Vis budget.\n");
             Console.WriteLine("2. Lav et budget.\n");
             Console.WriteLine("0. Exit.\n");
