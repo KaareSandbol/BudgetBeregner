@@ -66,6 +66,7 @@ namespace BudgetLibrary
                     List<int> incomeAmount = new List<int>();
                     List<int> expensesAmount = new List<int>();
                     //TODO: Don't print row that has a value of 0.
+
                     while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
