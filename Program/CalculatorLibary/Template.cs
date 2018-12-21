@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Budget_Beregner
+namespace BudgetLibrary
 {
     public class Template
     {
-        List<string> incomeColumn = new List<string>();
-        List<string> expenseColumn = new List<string>();
-        List<int> Income = new List<int>();
-        List<int> Expenses = new List<int>();
+        public List<string> incomeColumn = new List<string>();
+        public List<string> expenseColumn = new List<string>();
+        public List<int> Income = new List<int>();
+        public List<int> Expenses = new List<int>();
         int row = 0;
         int column = 0;
         int columnAmount = 0;
@@ -35,20 +35,20 @@ namespace Budget_Beregner
 
         public void PrintIncome()
         {
-            for (int i = 0; i < incomeColumn.Count; i++)
+            foreach (string name in incomeColumn)
             {
-                Console.WriteLine(incomeColumn[i]);
+                Design.Padding(name);
             }
         }
 
         public void PrintExpenses()
         {
-            for (int i = 0; i < expenseColumn.Count; i++)
+            foreach (string name in expenseColumn)
             {
-                Console.WriteLine(expenseColumn[i]);
+                Design.Padding(name);
             }
         }
-        //Splitted methods
+
         public void CalculateBudget()
         {
             BudgetRepository budgetRepo = new BudgetRepository();
@@ -78,12 +78,34 @@ namespace Budget_Beregner
             columnAmount = 0;
         }
 
+        public void SaveEditedBudget(List<string> incomeColumn, List<string> expenseColumn, List<int> incomeList, List<int> expensesList)
+        {
+            BudgetRepository budgetRepo = new BudgetRepository();
+            Console.WriteLine("Vil du gemme dit budget? Y/N");
+            string save = Console.ReadLine();
+            if (save is "y" || save is "Y")
+            {
+                budgetRepo.SaveBudget(incomeColumn, expenseColumn, incomeList, expensesList);
+                Console.ReadKey();
+            }
+            else if (save is "n" || save is "N")
+            {
+                Console.WriteLine("Tryk på en knap for at komme tilbage til menuen!");
+            }
+
+            incomeColumn.Clear();
+            expenseColumn.Clear();
+            Income.Clear();
+            Expenses.Clear();
+            columnAmount = 0;
+        }
+
         public void TemplateSimple()
         {
             row = 30;
             column = 2;
             incomeColumn.Add("SU: ");
-            incomeColumn.Add("Løn: ");
+            incomeColumn.Add("Løn:");
 
             expenseColumn.Add("Mobil: ");
             expenseColumn.Add("Husleje: ");
@@ -92,18 +114,18 @@ namespace Budget_Beregner
             columnAmount = (incomeColumn.Count + expenseColumn.Count);
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor hjemme");
-            Console.WriteLine("Indtast indkomster:");
-       
+            Design.Padding("Indtast indkomster");
+
             PrintIncome();
             InputIncome();
             ExtraIncome();
 
-            Console.WriteLine("Indtast Udgifter:");
-           
+            Design.Padding("Indtast Udgifter");
+
             PrintExpenses();
             row = 30;
             InputExpense();
-            ExtraExpense(); 
+            ExtraExpense();
 
             CalculateBudget();
             SaveBudget();
@@ -135,13 +157,13 @@ namespace Budget_Beregner
 
             Console.Clear();
             Console.WriteLine("Budget til 18-25 årige der bor ude");
-            Console.WriteLine("Indtast indkomster:");
+            Console.WriteLine("Indtast indkomster");
 
             PrintIncome();
             InputIncome();
             ExtraIncome();
 
-            Console.WriteLine("Indtast Udgifter:");
+            Console.WriteLine("Indtast Udgifter");
 
             PrintExpenses();
             row = 30;
@@ -224,6 +246,8 @@ namespace Budget_Beregner
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
+                Design.Padding("");
+                Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
                 // Exits out of income input
@@ -235,7 +259,7 @@ namespace Budget_Beregner
 
                 else if (input is string)
                 {
-                    incomeColumn.Add(input + ":");
+                    incomeColumn.Add(input);
                     row = 30;
 
                     while (looping)
@@ -271,6 +295,8 @@ namespace Budget_Beregner
                 looping = true;
                 row = 0;
                 Console.SetCursorPosition(row, column);
+                Design.Padding("");
+                Console.SetCursorPosition(row + 5, column);
                 string input = Console.ReadLine();
 
                 if (input.Equals(string.Empty))
@@ -280,7 +306,7 @@ namespace Budget_Beregner
 
                 else if (input is string)
                 {
-                    expenseColumn.Add(input + ":");
+                    expenseColumn.Add(input);
                     row = 30;
 
                     while (looping)
@@ -307,43 +333,72 @@ namespace Budget_Beregner
         //TODO: Hvis den får andet input end y og n så bliver det helt fucked.
         public void ExtraIncome()
         {
+            bool close = true;
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nVil du tilføje ekstra indkomster? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                //TODO: Vil vi have den til kosntant at stå i højre side ligesom vi gør med vores error message.
-                Console.WriteLine("Afslut med 'ENTER'");
-                row = 0;
-                Console.SetCursorPosition(row, column);
-                Console.ReadKey();
-                Console.SetCursorPosition(row = 0, column + 1);
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                AddIncome();
-            }
-            else if (save is "n" || save is "N")
-            {
 
+            while (close)
+            {
+                Console.SetCursorPosition(0, column + 2);
+                Console.WriteLine("        "); 
+                Console.SetCursorPosition(0, column + 2);
+                string save = Console.ReadLine();
+
+                if (save is "y" || save is "Y")
+                {
+                    Console.WriteLine("Afslut med 'ENTER'");
+                    row = 0;
+                    Console.SetCursorPosition(row, column);
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    AddIncome();
+                    Console.SetCursorPosition(row, column - 2);
+                    Console.WriteLine("                                                           ");
+                    close = false;
+                }
+                else if (save is "n" || save is "N")
+                {
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    
+                    column += 4;
+                    close = false;
+                }
             }
         }
 
         public void ExtraExpense()
         {
+            bool close = true;
             BudgetRepository budgetRepo = new BudgetRepository();
             Console.WriteLine("\nVil du tilføje ekstra udgifter? Y/N");
-            string save = Console.ReadLine();
-            if (save is "y" || save is "Y")
-            {
-                Console.SetCursorPosition(row = 0, column + 1);
-                Console.WriteLine("                                                           ");
-                Console.WriteLine("                                                           ");
-                AddExpense();
-            }
-            else if (save is "n" || save is "N")
-            {
 
+            while (close)
+            {
+                Console.SetCursorPosition(0, column + 2);
+                Console.WriteLine("        ");
+                Console.SetCursorPosition(0, column + 2);
+                string save = Console.ReadLine();
+
+                if (save is "y" || save is "Y")
+                {
+                    Console.SetCursorPosition(row = 0, column + 1);
+                    Console.WriteLine("                                                           ");
+                    Console.WriteLine("                                                           ");
+                    AddExpense();
+                    Console.SetCursorPosition(row, column);
+                    Console.WriteLine("                                                           ");
+                    column += 1;
+                    close = false;
+                }
+
+                else if (save is "n" || save is "N")
+                {
+                    close = false;
+                }
             }
         }
     }

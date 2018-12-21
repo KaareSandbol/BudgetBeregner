@@ -8,7 +8,7 @@ using System.IO;
 namespace BudgetLibrary
 {
     public class BudgetRepository
-    {
+    {        
         public int CalculateDisposableIncome(List<int> incomeList, List<int> expensesList)
         {
             int incomeSum = incomeList.Sum();
@@ -50,7 +50,7 @@ namespace BudgetLibrary
         {
             string line;
             int curserIncomeCount = 0;
-
+            
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -98,18 +98,32 @@ namespace BudgetLibrary
                             }                                                                                           
                         }                                                                       
                     }
+                    Console.WriteLine("\nVil du redigere i dette budget? Y/N");
+                    if (Console.ReadLine() == "y" || Console.ReadLine() == "Y")
+                    {
+                        Console.Clear();
+                        Template template = new Template();
+                        template.ExtraIncome();                        
+                        template.ExtraExpense();
+                        for (int i = 0; i < income.Count; i++)
+                        {
+                            template.incomeColumn.Add(income[i]);
+                            template.Income.Add(incomeAmount[i]);
+                        }
+                        for (int i = 0; i < expenses.Count; i++)
+                        {
+                            template.expenseColumn.Add(expenses[i]);
+                            template.Expenses.Add(expensesAmount[i]);
+                        }
+                        template.SaveBudget();
+                    }
                 }
             }
             catch (Exception)
             {
                 Console.WriteLine("\nUgyldigt budgetnavn.");
             }
-            Console.WriteLine("\nVil du redigere i dette budget? Y/N");
-            if (Console.ReadLine() == "y" || Console.ReadLine() == "Y")
-            {
-                Console.SetCursorPosition(0,curserIncomeCount);
-                
-            }
+
         }
     }
 }
